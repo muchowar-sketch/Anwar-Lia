@@ -12,8 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -56,20 +54,19 @@
             min-height: 100vh;
         }
 
-        /* Saat cover terbuka, kunci scroll layar */
         body.no-scroll {
             overflow: hidden !important;
             height: 100vh !important;
         }
 
-        #canvas-3d {
+        /* Latar Belakang Cahaya & Efek Bintang (CSS Native, Super Cepat) */
+        .bg-pattern {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
             z-index: 0;
             pointer-events: none;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.15) 0%, rgba(11, 13, 18, 0.95) 70%),
+                        radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 50%);
         }
 
         ::-webkit-scrollbar {
@@ -84,7 +81,7 @@
         }
 
         .glass-card {
-            background: rgba(20, 24, 36, 0.88);
+            background: rgba(20, 24, 36, 0.90);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -128,7 +125,7 @@
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* Cover Layar Penuh (Support HP & Laptop) */
+        /* Cover Layar Penuh */
         #cover-screen {
             position: fixed;
             top: 0;
@@ -153,8 +150,8 @@
 </head>
 <body class="antialiased selection:bg-jawa-gold selection:text-black no-scroll">
 
-    <!-- Canvas 3D Background -->
-    <canvas id="canvas-3d"></canvas>
+    <!-- Pattern Background -->
+    <div class="bg-pattern"></div>
 
     <!-- Audio Player -->
     <audio id="bg-music" loop preload="auto">
@@ -213,7 +210,7 @@
                 <p id="guest-name" class="font-semibold text-jawa-goldlight text-sm md:text-base">Tamu Undangan Spesial</p>
             </div>
 
-            <button onclick="openInvitation()" class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-jawa-gold via-yellow-500 to-jawa-bronze text-jawa-dark font-bold tracking-wider uppercase text-xs shadow-xl hover:shadow-jawa-gold/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <button id="btn-open" onclick="openInvitation()" class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-jawa-gold via-yellow-500 to-jawa-bronze text-jawa-dark font-bold tracking-wider uppercase text-xs shadow-xl hover:shadow-jawa-gold/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer relative z-50">
                 <i class="fa-solid fa-envelope-open text-sm"></i> Buka Undangan
             </button>
 
@@ -371,4 +368,4 @@
                                 </div>
                             </div>
 
-                            <a href="https://maps.app.goo.gl/2bHqKTMJdALmke4Y7" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-jawa-gold/20 border border-jawa-gold/50 text-jawa-goldlight text-xs font-semibold hover:bg-jaw
+                            <a href="https://maps.app.goo.gl/2bHqKTMJdALmke4Y7" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-jawa-gold/20 border border-jawa-gold/50 text

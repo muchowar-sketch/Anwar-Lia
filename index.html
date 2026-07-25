@@ -77,7 +77,27 @@
         ::-webkit-scrollbar-thumb {
             background: #D4AF37;
             border-radius: 3px;
+                /* Tampilan Cover Layar Penuh */
+        #cover-screen {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #0B0D12;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
+
+        #cover-screen.opened {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+            
 
         .glass-card {
             background: rgba(20, 24, 36, 0.88);
